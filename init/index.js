@@ -1,3 +1,4 @@
+const fs = require('fs');
 const replace = require('replace-in-file');
 
 const yargs = require('yargs')
@@ -22,6 +23,9 @@ try {
     from: /{{owner}}/,
     to: packageOrg
   });
+
+  fs.unlinkSync('README.md');
+  fs.renameSync('README.template.md', 'README.md');
 
   return 0;
 } catch (e) {
