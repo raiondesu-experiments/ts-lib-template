@@ -19,14 +19,14 @@ try {
 
   replace.sync({
     files: process.cwd() + '/**',
-    ignore: 'node_modules',
+    ignore: 'node_modules/**',
     from: /{{package-name}}/g,
     to: packageName
   });
 
   replace.sync({
     files: process.cwd() + '/**',
-    ignore: 'node_modules',
+    ignore: 'node_modules/**',
     from: /{{owner}}/g,
     to: packageOrg
   });
@@ -35,11 +35,11 @@ try {
   fs.renameSync('README.template.md', 'README.md');
 
   if (!yargs.dev) {
+    fs.unlinkSync('init.js');
+
     exec('npm un -D replace-in-file yargs').on('exit', (code) => {
       process.exit(code);
     });
-
-    fs.unlinkSync('init.js');
   }
 
   return process.exit(0);
