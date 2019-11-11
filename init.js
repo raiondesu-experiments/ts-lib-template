@@ -26,10 +26,11 @@ try {
   fs.unlinkSync('README.md');
   fs.renameSync('README.template.md', 'README.md');
 
-  fs.unlinkSync('init/index.js');
-  fs.unlinkSync('init');
+  exec('npm un -D replace-in-file yargs')
 
-  return exec('npm un -D replace-in-file yargs');
+  fs.unlink('init.js');
+
+  return 0;
 } catch (e) {
   console.error(`Please, make sure you have provided the package information in the following format:
   node init {github-username-or-org}/{package-name}`);
