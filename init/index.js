@@ -1,5 +1,6 @@
 const fs = require('fs');
 const replace = require('replace-in-file');
+const { exec } = require('child_process');
 
 const yargs = require('yargs')
   .option('description', {
@@ -25,7 +26,9 @@ try {
   fs.unlinkSync('README.md');
   fs.renameSync('README.template.md', 'README.md');
 
-  return 0;
+  fs.unlinkSync('init');
+
+  return exec('npm un -D replace-in-file yargs');
 } catch (e) {
   console.error(`Please, provide package information in the following format:
   node init {github-username-or-org}/{package-name}`);
