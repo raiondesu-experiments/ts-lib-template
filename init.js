@@ -28,7 +28,7 @@ try {
 
   exec('npm un -D replace-in-file yargs')
 
-  fs.unlink('init.js');
+  fs.unlinkSync('init.js');
 
   return 0;
 } catch (e) {
