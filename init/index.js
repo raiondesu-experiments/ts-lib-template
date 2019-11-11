@@ -16,13 +16,11 @@ try {
     files: process.cwd() + '/**',
     from: /{{package-name}}/,
     to: packageName
-  });
-
-  replace({
+  }).then(() => replace({
     files: process.cwd() + '/**',
     from: /{{owner}}/,
     to: packageOrg
-  });
+  }));
 
   fs.unlinkSync('README.md');
   fs.renameSync('README.template.md', 'README.md');
