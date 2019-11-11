@@ -17,15 +17,19 @@ const yargs = require('yargs')
 try {
   const [packageOrg, packageName] = yargs._[0].split('/');
 
-  replace({
+  replace.sync({
     files: process.cwd() + '/**',
+    ignore: /node_modules/,
     from: /{{package-name}}/g,
     to: packageName
-  }).then(() => replace({
+  });
+
+  replace.sync({
     files: process.cwd() + '/**',
+    ignore: /node_modules/,
     from: /{{owner}}/g,
     to: packageOrg
-  })).then(() => process.exit(0));
+  });
 
   fs.unlinkSync('README.md');
   fs.renameSync('README.template.md', 'README.md');
@@ -37,6 +41,8 @@ try {
 
     fs.unlinkSync('init.js');
   }
+
+  return process.exit(0);
 } catch (e) {
   console.error(`Please, make sure you have provided the package information in the following format:
   node init {github-username-or-org}/{package-name}`);
