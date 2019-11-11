@@ -30,8 +30,10 @@ try {
 
   return exec('npm un -D replace-in-file yargs');
 } catch (e) {
-  console.error(`Please, provide package information in the following format:
+  console.error(`Please, make sure you have provided the package information in the following format:
   node init {github-username-or-org}/{package-name}`);
+
+  console.error(e);
 
   return 1;
 }
