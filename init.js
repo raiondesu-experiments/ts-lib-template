@@ -19,14 +19,14 @@ try {
 
   replace.sync({
     files: process.cwd() + '/**',
-    ignore: /node_modules/,
+    ignore: 'node_modules',
     from: /{{package-name}}/g,
     to: packageName
   });
 
   replace.sync({
     files: process.cwd() + '/**',
-    ignore: /node_modules/,
+    ignore: 'node_modules',
     from: /{{owner}}/g,
     to: packageOrg
   });
