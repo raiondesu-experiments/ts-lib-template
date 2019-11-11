@@ -25,10 +25,6 @@ try {
     fs.unlinkSync('README.md');
     fs.renameSync('README.template.md', 'README.md');
 
-    exec('npm un -D replace-in-file yargs').on('exit', (code) => {
-      process.exit(code);
-    });
-
     fs.unlinkSync('init.js');
 
     process.exit(0);
