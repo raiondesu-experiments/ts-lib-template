@@ -20,15 +20,8 @@ try {
   replace.sync({
     files: process.cwd() + '/**',
     ignore: 'node_modules/**',
-    from: /{{package-name}}/g,
-    to: packageName
-  });
-
-  replace.sync({
-    files: process.cwd() + '/**',
-    ignore: 'node_modules/**',
-    from: /{{owner}}/g,
-    to: packageOrg
+    from: [/{{package-name}}/g, /{{owner}}/g, /{{description}}/g],
+    to: [packageName, packageOrg, yargs.description]
   });
 
   fs.unlinkSync('README.md');
