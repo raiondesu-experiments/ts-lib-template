@@ -9,8 +9,8 @@ const yargs = require('yargs')
     default: ''
   })
   .option('dev', {
-    alias: 'i',
-    default: false
+    default: false,
+    type: 'boolean'
   })
   .argv;
 
