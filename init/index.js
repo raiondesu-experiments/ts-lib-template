@@ -14,11 +14,11 @@ try {
 
   replace({
     files: process.cwd() + '/**',
-    from: /{{package-name}}/,
+    from: /{{package-name}}/g,
     to: packageName
   }).then(() => replace({
     files: process.cwd() + '/**',
-    from: /{{owner}}/,
+    from: /{{owner}}/g,
     to: packageOrg
   }));
 
