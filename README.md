@@ -12,6 +12,6 @@ A simple zero-setup typescript template for creating maintainable libraries.
      - `git init`
 
 2. In the repo's folder run:
-   - `node init-ts {your-github-username-or-org}/{your-package-name}`
    - `npm i`
+   - `node init-ts {your-github-username-or-org}/{your-package-name}`
 3. You're ready to go! Adjust the contents as you see fit.
